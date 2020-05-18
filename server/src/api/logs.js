@@ -3,16 +3,19 @@ const { Router } = require("express");
 const LogEntry = require("../models/LogEntry");
 
 const router = Router();
-router.get("/", (req, res) => {
-  res.json({
-    message: "Home",
-  });
+router.get("/", async (req, res) => {
+  try {
+    const entries = await LogEntry.find();
+    res.json(entries);
+  } catch (error) {
+    next(error);
+  }
 });
 
 router.post("/", async (req, res, next) => {
   try {
     const logEntry = new LogEntry(req.body);
-    console.log(logEntry);
+
     const createdEntry = await logEntry.save();
     res.json(createdEntry);
   } catch (error) {
