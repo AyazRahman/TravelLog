@@ -1,5 +1,7 @@
 const { Router } = require("express");
 
+const LogEntry = require("../models/LogEntry");
+
 const router = Router();
 router.get("/", (req, res) => {
   res.json({
@@ -8,7 +10,7 @@ router.get("/", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-  console.log("req.body");
+  console.log(req.body);
 });
 
 module.exports = router;
