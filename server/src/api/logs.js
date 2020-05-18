@@ -9,7 +9,19 @@ router.get("/", (req, res) => {
   });
 });
 
-router.post("/", (req, res) => {
+router.post("/", async (req, res, next) => {
+  try {
+    const logEntry = new LogEntry(req.body);
+    console.log(logEntry);
+    const createdEntry = await logEntry.save();
+    res.json(createdEntry);
+  } catch (error) {
+    if (error.name === "ValidationError") {
+      res.status(422);
+    }
+    next(error);
+  }
+
   console.log(req.body);
 });
 
