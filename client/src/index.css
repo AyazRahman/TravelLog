@@ -17,6 +17,13 @@ body {
   padding: 1rem;
 }
 
+.popup img {
+  height: 250px;
+  max-width: 100%;
+  margin: 0 auto;
+  display: block;
+}
+
 .entry-form label,
 .entry-form input,
 .entry-form textarea,
@@ -24,4 +31,8 @@ body {
   margin: 0.5rem 0;
   display: block;
   width: 100%;
+}
+
+.error {
+  color: red;
 }
